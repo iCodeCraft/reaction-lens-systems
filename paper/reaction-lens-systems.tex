@@ -1,0 +1,234 @@
+\documentclass[11pt,a4paper]{article}
+\input{preamble.tex}
+\input{artifact-links.tex}
+\input{numbers.tex}
+\usepackage[english]{babel}
+\title{Reaction Lens Systems: An Experience Report on Verifiable Full-Catalog Scientific Retrieval}
+\author{Imran Gadzhiev\\Independent Researcher}
+\date{5 October 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+Scientific retrieval software must preserve specified scoring behavior while its
+candidate collection and execution strategy change. We report an engineering
+evaluation of Reaction Lens Systems, an existing system that ranks Reactome reactions from
+English scientific text. We derive candidate-transformation contracts from its
+pointwise global/local scorer and check its blocked implementation against an
+unblocked reference. On sampled development inputs, \ContractChecks{} checks
+covering \ScoreComparisons{} score comparisons produce maximum observed logit
+difference \MaxError{} and \DecisionFlips{} fixed-threshold decision changes.
+For a catalog of \CatalogCount{} reactions, median cached-feature scoring time is
+\DefaultMedian{} ms with the default block size, while median complete local
+prediction time is \EndMedian{} ms on a separate convenience sample. An isolated
+installation also reproduces the checkpoint's recorded development ranking metrics.
+The contribution is an artifact-backed account of execution contracts, component
+costs and reproducibility boundaries in one retrieval system; it is not a new
+learning algorithm or a claim of general retrieval superiority.
+\end{abstract}
+{\small\noindent\repositorynotice}
+\section{Problem and contribution}
+A researcher inspecting a scientific abstract may need to identify relevant
+biological reactions in a curated catalog. Reaction Lens Systems supplies ranked proposals
+for human review. It does not generate reactions or establish that a proposed
+association is biologically correct. Its engineering problem is maintaining an
+inspectable relationship between input text, catalog entries and predictions.
+Changing the order of candidates or the scoring block size should not silently
+change the score assigned to an unchanged article--reaction pair.
+
+This report studies an existing implementation rather than introducing a new
+retrieval service. Its contributions are an explicit execution contract with
+metamorphic checks, a controlled comparison of blocked and unblocked exact
+scoring, and a package that separates regeneration of recorded tables from fresh
+model inference. These results are intended to help maintainers distinguish
+changes in ranking caused by new competitors from unintended changes in pairwise
+scores, and to identify which component dominates local request cost.
+We do not claim that candidate independence or blocked matrix operations are novel.
+
+\section{System and related work}
+Reactome supplies the biological reaction catalog \citep{reactome2026}.
+SPECTER and SPECTER2 provide citation-informed scientific document representations
+\citep{cohan2020specter,singh2023scirepeval}. Reaction Lens Systems freezes its encoder and
+uses a learned global/local head. We evaluate a fixed checkpoint to study
+execution equivalence, component costs and inference reproducibility.
+
+The processing path is English title/abstract, deterministic sentence spans,
+frozen text encoding, projected reaction vectors, exact blocked scoring, then
+ranked and threshold-selected output. Reaction vectors are prepared once during
+initialization. The Python API, CLI and local HTTP service share the prediction
+implementation. The implementation rejects simultaneous calls on one instance;
+we evaluate local sequential calls, not multi-user throughput. Bundle loading
+verifies listed file hashes and shapes. These checks detect mismatches against a
+manifest; they do not authenticate a maliciously replaced manifest or guarantee
+semantic compatibility of arbitrary user-supplied encoders.
+
+Metamorphic testing checks relations between transformed inputs and outputs when
+individual expected outputs are difficult to specify \citep{segura2016}.
+We instantiate this established approach for the candidate axis of the scorer.
+Agreement with an unblocked implementation checks execution equivalence, not
+biological correctness. Our reference shares the scoring implementation, so it
+cannot expose all common-mode defects. No fault-detection superiority is claimed.
+
+\section{Execution contracts}
+Let $g$ and $s_j$ be the normalized projections of the global article and
+valid sentence features through the shared learned article projection, and $r$
+the normalized output of the separate learned reaction projection. The fixed head computes
+\begin{equation}
+ z(x,r)=a\left[g^\top r+w\max\left(0,\max_j s_j^\top r-n\right)\right]+b,
+ \qquad \widehat{y}(x,r)=\mathbf{1}[z(x,r)\geq\tau].
+\end{equation}
+Here the learned scale $a$, local weight $w$, null $n$, bias $b$, and development-fitted
+threshold $\tau$ are held fixed. The implementation uses
+$a=\exp(\min(\ell,\log 100))$, $w=\operatorname{softplus}(u)$ and
+$n=\tanh(v)$ for learned scalars $\ell,u,v$. Padding is masked before the
+sentence maximum. No reduction is taken over competing reactions.
+Consequently, in real arithmetic, permuting candidates permutes outputs; removing
+candidates preserves retained scores; and appending candidates preserves previous
+scores. Fixed-threshold decisions inherit this property. Rankings and top-$k$
+membership do not: new candidates can outrank existing ones. Updating descriptions,
+model weights, preprocessing or the threshold also falls outside this contract.
+
+For batch size $B$, sentence count $S$, candidate count $R$ and projected width
+$P$, local similarities require $O(BSRP)$ arithmetic. Candidate blocks of width
+$K$ bound the principal local-similarity intermediate to $O(BSK)$ instead of
+$O(BSR)$. The final score matrix still uses $O(BR)$ storage, and the prepared
+reaction bank uses $O(RP)$ storage. Blocking is an execution tradeoff, not a
+retrieval shortlist or a reduction in the number of scored candidates.
+
+\section{Evaluation protocol}
+The protocol is included as \texttt{PROTOCOL.md}. Experiments use the fixed
+structured-description checkpoint and its checksummed cached development pack.
+All \CatalogCount{} catalog reactions are scored. We sample \SampleCount{} publications
+without replacement using NumPy seed 20261005 and run CPU FP32 with two PyTorch
+threads. The environment is macOS 26.6.1 on arm64, Python 3.12.14, PyTorch 2.14.1
+and NumPy 2.5.3. The sandbox did not expose the CPU brand; these results should
+not be treated as a portable hardware performance specification.
+
+Each block configuration receives five warmup queries and \RepeatCount{} timed repetitions
+per sampled publication. Timings exclude encoding, bundle loading, initial
+reaction projection and result serialization. Configurations run sequentially in
+fixed order, so thermal and background-load effects remain possible. Sample p95
+values are descriptive quantiles of repeated measurements, not confidence bounds.
+
+On the first repetition we check candidate permutation, a half-catalog subset,
+appending 128 duplicate reaction vectors, and an unblocked reference. The
+predeclared absolute logit tolerance is $10^{-5}$. Duplicate additions exercise
+candidate-axis execution; they do not evaluate new biological descriptions.
+Threshold checks use the existing release threshold without recalibration.
+
+Memory is measured separately in a fresh process for each configuration using
+the same padded batch of \MemoryBatch{} sampled publications, with maximum sentence count \MemorySpans{}.
+We record process high-water resident memory including imports and loaded feature
+arrays. These are not incremental tensor allocations, and each configuration has
+only one memory trial. Processes used for this comparison do not execute the
+unblocked reference or the candidate-transformation probes.
+
+Complete prediction measurements use \EndExamples{} existing released English
+comparison examples and three repetitions after one warmup. Their selection was
+for demonstration, so they are a convenience sample. Prediction includes text
+encoding, scoring, ranking and payload construction. JSON serialization is recorded
+separately; HTTP/network costs are excluded. Model setup is timed separately.
+
+\section{Results}
+\subsection{Candidate and execution equivalence}
+The checks produce \ScoreComparisons{} scalar comparisons across
+\ContractChecks{} query/configuration/scenario combinations. The maximum observed
+absolute logit error is \MaxError{}, with \DecisionFlips{} fixed-threshold flips.
+These measurements support the intended contract on this checkpoint, platform and
+sample. They are not a universal bitwise-equivalence proof across backends.
+Evidence: \evidence{results/table3_contracts.csv}{contract observations}, derived from all individual probes
+in \texttt{results/system-benchmark.json}. Regenerate with \texttt{make contracts}.
+
+\subsection{Blocking and local execution cost}
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrr}
+\toprule
+Block width & Median (ms) & p95 (ms) & Peak RSS (MiB)\\
+\midrule
+\SmallBlock & \SmallMedian & \SmallPninetyfive & \SmallMemory\\
+\DefaultBlock & \DefaultMedian & \DefaultPninetyfive & \DefaultMemory\\
+\FullBlock & \FullMedian & \FullPninetyfive & \FullMemory\\
+\bottomrule
+\end{tabular}
+\caption{\raggedright Cached-feature single-publication scoring latency and separate padded-batch
+process memory. These are different workloads. Every timing row scores the full
+catalog. Evidence: \evidence{results/table1_scoring.csv}{block comparison}; individual timings and memory
+observations are in \texttt{results/system-benchmark.json}. Regenerate with \texttt{make table1}.}
+\end{table}
+The smallest block incurs greater observed latency. The default and unblocked
+configurations have similar medians; this sample does not establish a significant
+speed difference between them. The blocked configurations have lower observed
+process peak RSS in the separate batch probe, consistent with the intermediate
+storage bound. Memory differences should not be generalized from a single trial.
+
+The \EndRequests{} complete local predictions have median \EndMedian{} ms and p95
+\EndPninetyfive{} ms. Encoding accounts for \EncodingShare\% of aggregate measured
+prediction time. Setup takes \SetupSeconds{} s, and process peak RSS reaches
+\EndMemory{} MiB. Evidence: \evidence{results/table2_end_to_end.csv}{component timings} and its raw
+source. Regenerate with \texttt{make timings}. For these examples, improving only head execution offers limited benefit
+to total latency because encoding dominates. This observation does not measure
+the effect of encoder caching, alternative encoders or approximate retrieval.
+
+\subsection{Reproduction boundary}
+An isolated dependency environment recomputes predictions from the downloaded
+checkpoint and cached features for \PublicationCount{} development publications,
+\KnownLinks{} known links and the full catalog. MAP is \MeasuredMAP{}, Hit@1 is
+\MeasuredHit{}, and micro Recall@100 is \MeasuredRecall{}. Maximum absolute
+difference from the stored release metrics is \MetricError{}.
+Evidence: \evidence{results/fresh-evaluation.json}{fresh evaluation}. Recorded links are incomplete,
+and development data were used during model development. Recall@100 is not
+top-one accuracy or evidence of biological correctness.
+
+For publication $i$, average precision sums the precision at each relevant
+rank over the full catalog and divides by the number of distinct recorded
+reaction labels for that publication, including labels absent from the catalog.
+MAP averages this value over publications. Hit@1 is the fraction of publications
+whose first result is recorded as relevant. Micro Recall@100 divides the total
+recorded links recovered in the first 100 results by all recorded links across
+publications. Equal logits retain catalog order. These definitions and the
+acceptance tolerance $5\times10^{-5}$ are implemented in
+\evidence{src/reaction_lens/evaluation.py}{the evaluation script}.
+
+This exercise verifies packaging and cached-feature inference. It does not
+independently reproduce encoder training, head training or every historical
+experiment. The complete-text latency experiment exercises the local encoder but
+does not rebuild the entire development feature cache. The reserved test remains
+unopened. The measured scorer, encoder, pipeline and benchmark sources are preserved by
+checksums; packaging, validation and documentation can be revised separately.
+
+\section{Limitations and practical implications}
+This is a single-system, single-checkpoint, single-host experience report. It does
+not demonstrate a general improvement over vector databases, other retrieval
+architectures or other testing methods. Candidate independence follows directly
+from pointwise scoring; the evidence is about an implementation's conformance and
+costs, not discovery of a new mathematical property. We have not measured failures
+in deployed systems, mutation-detection rates, user productivity or maintenance
+effort. The contract checks contain related scalar comparisons, not independent
+statistical samples. The convenience text sample and repeated development use
+limit semantic and performance generalization.
+
+The reusable engineering lessons are to state whether a score is pairwise or
+candidate-set-dependent, distinguish score stability from rank stability, test
+blocking separately from retrieval quality, and report encoder and head costs
+separately. For reproduction, pin the model and feature artifacts and distinguish
+reconstruction of tables from actual inference. These practices can make this
+system easier to inspect, but our study does not quantify developer benefits.
+
+\section{Conclusion and availability}
+Reaction Lens Systems provides a concrete case in which exact catalog scoring can be
+blocked without observed changes to retained candidates' scores, while encoder
+execution dominates measured local request latency. The artifact records all
+probes and ties displayed results to raw measurements through a generated
+\texttt{NUMBERS.csv}. The accompanying instructions provide table reconstruction,
+fresh inference, and experiment rerun commands as distinct operations.
+The code is licensed under MIT and the manuscript under CC BY 4.0.
+
+\paragraph{Tool assistance.} An AI coding assistant assisted with the measurement
+scripts, analysis and manuscript preparation. Reported measurements were produced
+by executing the scripts. The author is responsible for the content.
+
+{\small
+\setlength{\bibsep}{3pt}
+\bibliographystyle{plainnat}
+\bibliography{references}}
+\end{document}

@@ -1,0 +1,41 @@
+\begin{thebibliography}{4}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Cohan et~al.(2020)Cohan, Feldman, Beltagy, Downey, and
+  Weld]{cohan2020specter}
+Arman Cohan, Sergey Feldman, Iz~Beltagy, Doug Downey, and Daniel Weld.
+\newblock {SPECTER}: Document-level representation learning using
+  citation-informed transformers.
+\newblock In \emph{Proceedings of ACL}, pages 2270--2282, 2020.
+\newblock \doi{10.18653/v1/2020.acl-main.207}.
+
+\bibitem[Ragueneau et~al.(2026)Ragueneau, Gong, Sinquin, et~al.]{reactome2026}
+Eliot Ragueneau, Chuqiao Gong, Pierre Sinquin, et~al.
+\newblock The {Reactome} knowledgebase 2026.
+\newblock \emph{Nucleic Acids Research}, 54\penalty0 (D1):\penalty0 D673--D681,
+  2026.
+\newblock \doi{10.1093/nar/gkaf1223}.
+\newblock URL \url{https://academic.oup.com/nar/article/54/D1/D673/8326464}.
+
+\bibitem[Segura et~al.(2016)Segura, Fraser, S{\'a}nchez, and
+  Ruiz-Cort{\'e}s]{segura2016}
+Sergio Segura, Gordon Fraser, Ana~Bel{\'e}n S{\'a}nchez, and Antonio
+  Ruiz-Cort{\'e}s.
+\newblock A survey on metamorphic testing.
+\newblock \emph{IEEE Transactions on Software Engineering}, 42\penalty0
+  (9):\penalty0 805--824, 2016.
+\newblock \doi{10.1109/TSE.2016.2532875}.
+
+\bibitem[Singh et~al.(2023)Singh, D'Arcy, Cohan, Downey, and
+  Feldman]{singh2023scirepeval}
+Amanpreet Singh, Mike D'Arcy, Arman Cohan, Doug Downey, and Sergey Feldman.
+\newblock {SciRepEval}: A multi-format benchmark for scientific document
+  representations.
+\newblock In \emph{Proceedings of EMNLP}, pages 5548--5566, 2023.
+\newblock \doi{10.18653/v1/2023.emnlp-main.338}.
+
+\end{thebibliography}

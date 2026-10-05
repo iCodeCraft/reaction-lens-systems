@@ -1,0 +1,23 @@
+% XeLaTeX / Tectonic. TeX Live font files; no OS font lookup or shell escape.
+\usepackage{fontspec}
+\setmainfont{cmunrm.otf}[BoldFont=cmunbx.otf,ItalicFont=cmunti.otf,BoldItalicFont=cmunbi.otf]
+\usepackage[a4paper,margin=20mm]{geometry}
+\usepackage{amsmath,amssymb,booktabs,tabularx,graphicx,xcolor}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{microtype}
+\usepackage[section]{placeins}
+\usepackage[colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,urlcolor=blue!45!black]{hyperref}
+\setlength{\parindent}{1em}
+\setlength{\parskip}{2pt}
+\setlength{\textfloatsep}{13pt plus 2pt minus 2pt}
+\setlength{\floatsep}{10pt plus 2pt minus 2pt}
+\setlength{\emergencystretch}{2em}
+\renewcommand{\topfraction}{0.90}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\textfraction}{0.08}
+\renewcommand{\floatpagefraction}{0.75}
+\newcommand{\norm}[1]{\frac{#1}{\lVert #1\rVert_2}}
+\newcommand{\softplus}{\operatorname{softplus}}
+\newcommand{\LSE}{\operatorname{LSE}}
+\newcommand{\pending}[1]{\textcolor{black!65}{\textit{#1}}}

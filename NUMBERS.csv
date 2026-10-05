@@ -1,0 +1,35 @@
+claim,value,displayed_value,unit,source,pointer,generator
+SampleCount,64,64,publications,results/system-benchmark.json,/protocol/samples,scripts/render_results.py
+RepeatCount,3,3,repeats,results/system-benchmark.json,/protocol/repeats,scripts/render_results.py
+MemoryBatch,16,16,publications,results/system-benchmark.json,/memory_runs/0/batch,scripts/render_results.py
+MemorySpans,14,14,spans,results/system-benchmark.json,/memory_runs/0/max_sentences,scripts/render_results.py
+ContractChecks,768,768,checks,results/system-benchmark.json,/contract_summary/checks,scripts/render_results.py
+ScoreComparisons,10545024,10545024,comparisons,results/system-benchmark.json,/contract_summary/score_comparisons,scripts/render_results.py
+MaxError,0.0,0.0,logit,results/system-benchmark.json,/contract_summary/max_absolute_logit_error,scripts/render_results.py
+DecisionFlips,0,0,decisions,results/system-benchmark.json,/contract_summary/selection_flips,scripts/render_results.py
+SmallBlock,128,128,options,results/system-benchmark.json,/cached_feature_runs/0/block_size,scripts/render_results.py
+SmallMedian,1.6760624985181494,1.676,ms,results/system-benchmark.json,/cached_feature_runs/0/timings/*/seconds -> median * 1000,scripts/render_results.py
+SmallPninetyfive,1.8266749983013142,1.827,ms,results/system-benchmark.json,/cached_feature_runs/0/timings/*/seconds -> quantile(.95) * 1000,scripts/render_results.py
+SmallMemory,412.53125,412.53,MiB,results/system-benchmark.json,/memory_runs/0/process_peak_rss_bytes / 1048576,scripts/render_results.py
+DefaultBlock,1024,1024,options,results/system-benchmark.json,/cached_feature_runs/1/block_size,scripts/render_results.py
+DefaultMedian,0.6424790008168202,0.642,ms,results/system-benchmark.json,/cached_feature_runs/1/timings/*/seconds -> median * 1000,scripts/render_results.py
+DefaultPninetyfive,0.7009560988080921,0.701,ms,results/system-benchmark.json,/cached_feature_runs/1/timings/*/seconds -> quantile(.95) * 1000,scripts/render_results.py
+DefaultMemory,414.171875,414.17,MiB,results/system-benchmark.json,/memory_runs/1/process_peak_rss_bytes / 1048576,scripts/render_results.py
+FullBlock,15692,15692,options,results/system-benchmark.json,/cached_feature_runs/2/block_size,scripts/render_results.py
+FullMedian,0.6559999983437592,0.656,ms,results/system-benchmark.json,/cached_feature_runs/2/timings/*/seconds -> median * 1000,scripts/render_results.py
+FullPninetyfive,0.7644040508239413,0.764,ms,results/system-benchmark.json,/cached_feature_runs/2/timings/*/seconds -> quantile(.95) * 1000,scripts/render_results.py
+FullMemory,444.046875,444.05,MiB,results/system-benchmark.json,/memory_runs/2/process_peak_rss_bytes / 1048576,scripts/render_results.py
+EndRequests,15,15,requests,results/system-benchmark.json,/end_to_end/rows -> length,scripts/render_results.py
+EndExamples,5,5,publications,results/system-benchmark.json,/end_to_end/rows/*/pmid -> unique count,scripts/render_results.py
+EndMedian,268.9037090021884,268.90,ms,results/system-benchmark.json,/end_to_end/rows/*/predict_seconds -> median * 1000,scripts/render_results.py
+EndPninetyfive,393.5445374005212,393.54,ms,results/system-benchmark.json,/end_to_end/rows/*/predict_seconds -> quantile(.95) * 1000,scripts/render_results.py
+SetupSeconds,4.869572875002632,4.87,s,results/system-benchmark.json,/end_to_end/setup_seconds,scripts/render_results.py
+EndMemory,1149.21875,1149.22,MiB,results/system-benchmark.json,/end_to_end/process_peak_rss_bytes / 1048576,scripts/render_results.py
+EncodingShare,96.3298696170422,96.33,percent,results/system-benchmark.json,/end_to_end/rows -> sum(encoding_seconds) / sum(predict_seconds) * 100,scripts/render_results.py
+PublicationCount,2377,2377,count,results/fresh-evaluation.json,/publications,scripts/render_results.py
+CatalogCount,15692,15692,count,results/fresh-evaluation.json,/catalog_reactions,scripts/render_results.py
+KnownLinks,4094,4094,count,results/fresh-evaluation.json,/known_links,scripts/render_results.py
+MeasuredMAP,0.47698647378227255,0.4770,fraction,results/fresh-evaluation.json,/measured/MAP,scripts/render_results.py
+MeasuredHit,0.3925115692048801,0.3925,fraction,results/fresh-evaluation.json,/measured/Hit@1,scripts/render_results.py
+MeasuredRecall,0.9015632633121642,0.9016,fraction,results/fresh-evaluation.json,/measured/Recall@100,scripts/render_results.py
+MetricError,0.0,0.0,absolute difference,results/fresh-evaluation.json,/absolute_differences -> max,scripts/render_results.py

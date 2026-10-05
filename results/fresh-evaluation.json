@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "model_id": "reaction-lens-structured-seed23-epoch105",
+  "publications": 2377,
+  "catalog_reactions": 15692,
+  "known_links": 4094,
+  "measured": {
+    "MAP": 0.47698647378227255,
+    "Hit@1": 0.3925115692048801,
+    "Recall@100": 0.9015632633121642
+  },
+  "expected": {
+    "MAP": 0.47698647378227255,
+    "Hit@1": 0.3925115692048801,
+    "Recall@100": 0.9015632633121642
+  },
+  "absolute_differences": {
+    "MAP": 0.0,
+    "Hit@1": 0.0,
+    "Recall@100": 0.0
+  },
+  "absolute_tolerance": 5e-05,
+  "seconds": 4.2282249169984425,
+  "scope": "Recompute full-catalog ranking for structured seed23 epoch105 from frozen cached features. No training, text encoding, OOF calibration or other seeds."
+}

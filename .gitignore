@@ -1,0 +1,20 @@
+.venv/
+__pycache__/
+*.pyc
+artifacts/
+*.egg-info/
+build/
+paper/*.log
+paper/*.aux
+paper/*.out
+paper/*.blg
+
+# Local review artifacts; excluded from publication.
+paper/*-ru.*
+.local/
+
+.idea/
+
+*.log
+
+/paper/reaction-lens-systems-source.zip

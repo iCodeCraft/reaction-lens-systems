@@ -1,0 +1,121 @@
+{
+  "selection": "First five PMID-sorted development rows with 1–8 covered links; independent of predictions",
+  "examples": [
+    {
+      "id": "development-10022914",
+      "pmid": "10022914",
+      "source_group": "5c979b05f08385eb9c677ac62223ad4144bfc10f35254c94112fbbd836c978b5",
+      "split": "development",
+      "title": "Identification of a novel family of targets of PYK2 related to Drosophila retinal degeneration B (rdgB) protein.",
+      "abstract": "The protein tyrosine kinase PYK2 has been implicated in signaling pathways activated by G-protein-coupled receptors, intracellular calcium, and stress signals. Here we describe the molecular cloning and characterization of a novel family of PYK2-binding proteins designated Nirs (PYK2 N-terminal domain-interacting receptors). The three Nir proteins (Nir1, Nir2, and Nir3) bind to the amino-terminal domain of PYK2 via a conserved sequence motif located in the carboxy terminus. The primary structures of Nirs reveal six putative transmembrane domains, a region homologous to phosphatidylinositol (PI) transfer protein, and an acidic domain. The Nir proteins are the human homologues of the Drosophila retinal degeneration B protein (rdgB), a protein implicated in the visual transduction pathway in flies. We demonstrate that Nirs are calcium-binding proteins that exhibit PI transfer activity in vivo. Activation of PYK2 by agents that elevate intracellular calcium or by phorbol ester induce tyrosine phosphorylation of Nirs. Moreover, PYK2 and Nirs exhibit similar expression patterns in several regions of the brain and retina. In addition, PYK2-Nir complexes are detected in lysates prepared from cultured cells or from brain tissues. Finally, the Nir1-encoding gene is located at human chromosome 17p13.1, in proximity to a locus responsible for several human retinal diseases. We propose that the Nir and rdgB proteins represent a new family of evolutionarily conserved PYK2-binding proteins that play a role in the control of calcium and phosphoinositide metabolism downstream of G-protein-coupled receptors.",
+      "known_reaction_ids": [
+        "R-HSA-8869241"
+      ],
+      "reaction_ids": [
+        "R-HSA-210290",
+        "R-HSA-6786155",
+        "R-HSA-6803240",
+        "R-HSA-8869241",
+        "R-HSA-9036970",
+        "R-HSA-9629004",
+        "R-HSA-9706977",
+        "R-HSA-983700"
+      ],
+      "menu_policy": "Known covered links plus deterministic distractors; constructed diagnostic, not benchmark",
+      "source_sha256": "a97ea8af603a94953b5025ee6a30d9733d18b885cabff980f33b78fb062e57ff"
+    },
+    {
+      "id": "development-10047984",
+      "pmid": "10047984",
+      "source_group": "90c525f43cd00611a08a896c5c73d56ba227390f0e9bca22bf7293eddc5a799c",
+      "split": "development",
+      "title": "Phosphorylation of non-muscle myosin II regulatory light chain by p21-activated kinase (gamma-PAK).",
+      "abstract": "Myosin regulatory light chain (RLC) phosphorylation has been implicated in Rho-mediated stress fibre formation. The recent observation that Rho kinase phosphorylates RLC in vitro suggests that serine/threonine kinases other than those in the myosin light chain kinase (MLCK) family have the potential to activate myosin II. In this study we report that gamma-PAK, which is activated by the GTP-binding proteins Cdc42 and Rac, catalyses phosphorylation of intact non-muscle myosin II and isolated recombinant RLC. gamma-PAK phosphorylated endothelial cell myosin II to 0.85 +/- 0.02 mol PO4 per mol RLC. Phosphorylation is Ca2+/calmodulin-independent and the enzyme has a K(m) and Vmax for myosin II regulatory light chain of 12 microM and 180 nmol/min/mg respectively. No myosin II heavy chain phosphorylation was detected. Phosphopeptide maps and phosphoamino acid analysis revealed that gamma-PAK phosphorylates Ser-19 but does not phosphorylate Thr-18. A panel of recombinant RLC mutants was used to confirm that Ser-19 is the only phosphorylation site modified by gamma-PAK. On substitution of both Ser-19 and Thr-18 with Ala or Glu, no phosphorylation of other Ser/Thr residues in the RLC was detected. Similar to MLCK, Arg-16 is required for interaction of gamma-PAK with the substrate, since converting Arg-16 to Ala significantly reduced RLC phosphorylation. Endothelial cell monolayers permeabilized with saponin retract upon exposure to either Cdc42 or trypsin-activated gamma-PAK and ATP. Activation of gamma-PAK is required to initiate Ca2+/calmodulin-independent cell retraction and actin rearrangement. Taken together, these data suggest that myosin II activation by the p21-activated family of kinases may be physiologically important in regulating cytoskeletal organization.",
+      "known_reaction_ids": [
+        "R-HSA-3928640",
+        "R-HSA-5668932"
+      ],
+      "reaction_ids": [
+        "R-HSA-2220966",
+        "R-HSA-3928640",
+        "R-HSA-549297",
+        "R-HSA-5668932",
+        "R-HSA-9686343",
+        "R-HSA-9731708",
+        "R-HSA-9757256",
+        "R-HSA-9857814"
+      ],
+      "menu_policy": "Known covered links plus deterministic distractors; constructed diagnostic, not benchmark",
+      "source_sha256": "a97ea8af603a94953b5025ee6a30d9733d18b885cabff980f33b78fb062e57ff"
+    },
+    {
+      "id": "development-10049780",
+      "pmid": "10049780",
+      "source_group": "445d519ac0763e608cb58f78ae3c8a909f02a023998b5c9006030f1975dd5467",
+      "split": "development",
+      "title": "Antiangiogenic activity of restin, NC10 domain of human collagen XV: comparison to endostatin.",
+      "abstract": "Based on a homology search with endostatin, the C-terminus 185 aa of collagen XVIII, we report the cloning, expression, and antiangiogenic activity of a 22 kDa human collagen XV fragment, that we have named restin. Restin was expressed in the prokaryotic pET expression system. We have shown that restin inhibits the migration of endothelial cells in vitro but has no effect on the proliferation of these cells. A polyclonal antibody raised against endostatin cross-reacted with restin. Systemic administration of restin suppressed the growth of tumors in a xenograft renal carcinoma model.",
+      "known_reaction_ids": [
+        "R-HSA-2168038"
+      ],
+      "reaction_ids": [
+        "R-HSA-168875",
+        "R-HSA-201634",
+        "R-HSA-2168038",
+        "R-HSA-2213243",
+        "R-HSA-2470555",
+        "R-HSA-3159253",
+        "R-HSA-74992",
+        "R-HSA-9796045"
+      ],
+      "menu_policy": "Known covered links plus deterministic distractors; constructed diagnostic, not benchmark",
+      "source_sha256": "a97ea8af603a94953b5025ee6a30d9733d18b885cabff980f33b78fb062e57ff"
+    },
+    {
+      "id": "development-10067896",
+      "pmid": "10067896",
+      "source_group": "6b9e754f8c4dd404d859415bcd237ddc125d857cccb5edf663dd7d93438fab8e",
+      "split": "development",
+      "title": "Inhibition of transforming growth factor-beta/SMAD signalling by the interferon-gamma/STAT pathway.",
+      "abstract": "Transforming growth factor-beta (TGF-beta) and interferon-gamma (IFN-gamma) have opposite effects on diverse cellular functions, but the basis for this antagonism is not known. TGF-beta signals through a receptor serine kinase that phosphorylates and activates the transcription factors Smads 2 and 3, whereas the IFN-gamma receptor and its associated protein tyrosine kinase Jak1 mediate phosphorylation and activation of the transcription factor Stat1. Here we present a basis for the integration of TGF-beta and IFN-gamma signals. IFN-gamma inhibits the TGF beta-induced phosphorylation of Smad3 and its attendant events, namely, the association of Smad3 with Smad4, the accumulation of Smad3 in the nucleus, and the activation of TGFbeta-responsive genes. Acting through Jak1 and Stat1, IFN-gamma induces the expression of Smad7, an antagonistic SMAD, which prevents the interaction of Smad3 with the TGF-beta receptor. The results indicate a mechanism of transmodulation between the STAT and SMAD signal-transduction pathways.",
+      "known_reaction_ids": [
+        "R-HSA-9730967"
+      ],
+      "reaction_ids": [
+        "R-HSA-1591234",
+        "R-HSA-6810161",
+        "R-HSA-8851356",
+        "R-HSA-8983077",
+        "R-HSA-9612509",
+        "R-HSA-9670412",
+        "R-HSA-9705299",
+        "R-HSA-9730967"
+      ],
+      "menu_policy": "Known covered links plus deterministic distractors; constructed diagnostic, not benchmark",
+      "source_sha256": "a97ea8af603a94953b5025ee6a30d9733d18b885cabff980f33b78fb062e57ff"
+    },
+    {
+      "id": "development-10069812",
+      "pmid": "10069812",
+      "source_group": "b2be0f2ae3810d89f0391530cf31bcf5f64e31d465fd4941b0823c6ab97f0b54",
+      "split": "development",
+      "title": "Cytoplasmic dynein heavy chain 1b is required for flagellar assembly in Chlamydomonas.",
+      "abstract": "A second cytoplasmic dynein heavy chain (cDhc) has recently been identified in several organisms, and its expression pattern is consistent with a possible role in axoneme assembly. We have used a genetic approach to ask whether cDhc1b is involved in flagellar assembly in Chlamydomonas. Using a modified PCR protocol, we recovered two cDhc sequences distinct from the axonemal Dhc sequences identified previously. cDhc1a is closely related to the major cytoplasmic Dhc, whereas cDhc1b is closely related to the minor cDhc isoform identified in sea urchins, Caenorhabditis elegans, and Tetrahymena. The Chlamydomonas cDhc1b transcript is a low-abundance mRNA whose expression is enhanced by deflagellation. To determine its role in flagellar assembly, we screened a collection of stumpy flagellar (stf) mutants generated by insertional mutagenesis and identified two strains in which portions of the cDhc1b gene have been deleted. The two mutants assemble short flagellar stumps (<1-2 micrometer) filled with aberrant microtubules, raft-like particles, and other amorphous material. The results indicate that cDhc1b is involved in the transport of components required for flagellar assembly in Chlamydomonas.",
+      "known_reaction_ids": [
+        "R-HSA-5624952"
+      ],
+      "reaction_ids": [
+        "R-HSA-110356",
+        "R-HSA-2142859",
+        "R-HSA-5624952",
+        "R-HSA-5635856",
+        "R-HSA-5694415",
+        "R-HSA-9755078",
+        "R-HSA-977136",
+        "R-HSA-9911597"
+      ],
+      "menu_policy": "Known covered links plus deterministic distractors; constructed diagnostic, not benchmark",
+      "source_sha256": "a97ea8af603a94953b5025ee6a30d9733d18b885cabff980f33b78fb062e57ff"
+    }
+  ]
+}

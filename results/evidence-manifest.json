@@ -1,0 +1,8 @@
+{
+  "results/system-benchmark.json": "7bf5a4206726ae7603d739a129067682d23eb643af2b724cc426a239361ae3d5",
+  "results/fresh-evaluation.json": "6b11e4111e296c2a3e8e66888e889019fb1ecf793455a1ad6b8240f7b5f6986d",
+  "PROTOCOL.md": "e7442b0043f17f9def948ded4f69bc53f3fefed1f87c5fb55354fe11fd8caf0a",
+  "scripts/benchmark_system.py": "b1168d55e56c88a40b44d28a75cb36cef5820285693e927805f6258154b3fa6e",
+  "scripts/check_release.py": "6b0bef37f954e9ea6e24b3a2ea117d8c6403195d2aa9c9f232c0e3fee90cce8c",
+  "scripts/render_results.py": "4b8b4d7167ede33d29b4d6a67f36e9c35fcc0f605fdc1f0da532502aa8bc1b6f"
+}

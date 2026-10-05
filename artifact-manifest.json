@@ -1,0 +1,15 @@
+{
+  "repo_id": "imrangadzhiev/reaction-lens-systems",
+  "revision": "4f1dc979016b329ca9c11856aa7f2a2589af7bfa",
+  "files_sha256": {
+    "head.safetensors": "55d33e05e1c6f2ad5513de24823d9c56f62972325e351ccee07c85e696114873",
+    "catalog.jsonl": "9e4235ed99225904819399ebe2ceea026cb11fa30771c7dfdbd52585c75d41e2",
+    "manifest.json": "f614fd49f6b4099afb000f851749c026c26309e90db89b4a5c695c13345cd1a7",
+    "catalog-vectors.npy": "60c70a0dc98f1a011eecc35a392f12068c2143b4e83836f5c97f410a204bc5cd",
+    "evaluation/sentences.npy": "f93b2e4e4072d458dd02772c51956f759b0e401a6137a502c12c879e3cacd9b2",
+    "evaluation/offsets.npy": "11f7af459f9e1c173b4152482ceb3484a7c4129d70a53a80583083b09f0a4a1d",
+    "evaluation/articles.npy": "bfcded32cfb9bb7b18dca023c80e01eaf4f6d537094b5ece37332499444d6c3b",
+    "evaluation/labels.jsonl": "3d5643532d2a274055794ee9e73227d0e4bcb6f9e8b94e9c915ff65f3aa5bdc9",
+    "evaluation/manifest.json": "c62b49d827b5c861fa5bc48e566812ae4fde95ed476cad0b471fa5ec45fcb6f0"
+  }
+}
